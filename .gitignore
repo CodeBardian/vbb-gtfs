@@ -1,4 +1,5 @@
 # created by virtualenv automatically
 *.txt
-
+!requirements.txt
 .ipynb_checkpoints
+.vscode
