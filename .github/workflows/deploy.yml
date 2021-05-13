@@ -16,7 +16,8 @@ jobs:
       - name: build
         run: | 
           pip install nbconvert
-          jupyter nbconvert --output-dir='./docs' --to html --output index.html GTFS.ipynb
+          jupyter nbconvert --to notebook --execute GTFS.ipynb
+          jupyter nbconvert --output-dir='./docs' --to html --output index.html GTFS.nbconvert.ipynb
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
