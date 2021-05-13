@@ -1,0 +1,25 @@
+name: Deploy Notebook
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build
+        run: | 
+          pip install nbconvert
+          jupyter nbconvert --output-dir='./docs' --to html GTFS.ipynb
+          
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
