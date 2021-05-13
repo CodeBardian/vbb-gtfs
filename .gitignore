@@ -1,0 +1,4 @@
+# created by virtualenv automatically
+*.txt
+
+.ipynb_checkpoints
