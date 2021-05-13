@@ -15,11 +15,13 @@ jobs:
 
       - name: build
         run: | 
+          python3 -m pip install ipykernel
+          python3 -m ipykernel install --user
           pip install nbconvert
-          jupyter nbconvert --output-dir='./docs' --to html --output index.html GTFS.ipynb
+          jupyter nbconvert --to html --output-dir ./docs --output index.html GTFS.ipynb --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.enabled=True
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: ./_build/html
