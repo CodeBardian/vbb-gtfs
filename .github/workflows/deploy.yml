@@ -15,8 +15,8 @@ jobs:
 
       - name: build
         run: | 
-          pip install jupyter-book
-          jupyter-book build GTFS.ipynb
+          pip install nbconvert
+          jupyter nbconvert --to html --output-dir ./docs --output index.html GTFS.ipynb --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.enabled=True
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
