@@ -15,6 +15,8 @@ jobs:
 
       - name: build
         run: | 
+          python3 -m pip install ipykernel
+          python3 -m ipykernel install --user
           pip install nbconvert
           jupyter nbconvert --to html --output-dir ./docs --output index.html GTFS.ipynb --ExecutePreprocessor.kernel_name=python --ExecutePreprocessor.enabled=True
           
