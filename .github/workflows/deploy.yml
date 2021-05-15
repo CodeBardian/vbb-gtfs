@@ -12,13 +12,15 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-
-      - name: build
-        run: | 
+      
+      - name: install requirements
+        run: |
           python3 -m pip install ipykernel
           python3 -m ipykernel install --user
           pip install -r requirements.txt
-          jupyter-book build .
+
+      - name: build
+        run: jupyter-book build .
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
