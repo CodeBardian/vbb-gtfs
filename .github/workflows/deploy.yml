@@ -12,13 +12,20 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+           python-version: 3.8
+      
+      - name: install requirements
+        run: |
+          python3 -m pip install ipykernel
+          python3 -m ipykernel install --user --name data-science
+          python3 -m pip install -r requirements.txt
 
       - name: build
-        run: | 
-          python3 -m pip install ipykernel
-          python3 -m ipykernel install --user
-          pip install -r requirements.txt
-          jupyter-book build .
+        run: jupyter-book build .
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
