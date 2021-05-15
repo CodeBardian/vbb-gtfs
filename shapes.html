@@ -245,8 +245,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 83.1 ms, sys: 115 ms, total: 198 ms
-Wall time: 2.27 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 112 ms, sys: 94.5 ms, total: 207 ms
+Wall time: 2.25 s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;agency.txt&#39;,
@@ -1874,17 +1874,7 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 
 
 </div>
-</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">95</span><span class="n">fddadc9ddd</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">datashader.transfer_functions</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">LineString</span>
-<span class="ne">---&gt; </span><span class="mi">13</span> <span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;contextily&#39;
-</pre></div>
-</div>
-</div>
+</div></div>
 </div>
 </div>
 <div class="section" id="setup-plotting">
@@ -1919,6 +1909,307 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1002">Loading BokehJS ...</span>
+</div></div><script type="application/javascript">
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1002");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    const hashes = {"https://cdn.bokeh.org/bokeh/release/bokeh-2.3.1.min.js": "YF85VygJKMVnHE+lLv2AM93Vbstr0yo2TbIu5v8se5Rq3UQAUmcuh4aaJwNlpKwa", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.1.min.js": "KKuas3gevv3PvrlkyCMzffFeaMq5we/a2QsP5AUoS3mJ0jmaCL7jirFJN3GoE/lM", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.1.min.js": "MK/uFc3YT18pkvvXRl66tTHjP0/dxoSH2e/eiNMFIguKlun2+WVqaPTWmUy/zvh4"};
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      if (url in hashes) {
+        element.crossOrigin = "anonymous";
+        element.integrity = "sha384-" + hashes[url];
+      }
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js", "https://unpkg.com/moment@2.27.0/moment.js", "https://cdn.bokeh.org/bokeh/release/bokeh-2.3.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.1.min.js", "https://unpkg.com/@holoviz/panel@^0.11.3/dist/panel.min.js"];
+  var css_urls = ["https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator_simple.min.css"];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1002")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
 </div>
 </div>
 <div class="section" id="read-and-format-data">
@@ -1931,6 +2222,23 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.1 s, sys: 168 ms, total: 2.27 s
+Wall time: 2.27 s
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5030583 entries, 0 to 5030582
+Data columns (total 4 columns):
+ #   Column             Dtype  
+---  ------             -----  
+ 0   shape_id           int64  
+ 1   shape_pt_lat       float64
+ 2   shape_pt_lon       float64
+ 3   shape_pt_sequence  int64  
+dtypes: float64(2), int64(2)
+memory usage: 153.5 MB
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1938,6 +2246,70 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>shape_id</th>
+      <th>shape_pt_lat</th>
+      <th>shape_pt_lon</th>
+      <th>shape_pt_sequence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>210</td>
+      <td>52.390812</td>
+      <td>13.066689</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>210</td>
+      <td>52.390761</td>
+      <td>13.067064</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>210</td>
+      <td>52.390835</td>
+      <td>13.066852</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>210</td>
+      <td>52.390894</td>
+      <td>13.065428</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>210</td>
+      <td>52.390932</td>
+      <td>13.064851</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
