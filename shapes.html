@@ -245,8 +245,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 112 ms, sys: 94.5 ms, total: 207 ms
-Wall time: 2.25 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 91.4 ms, sys: 111 ms, total: 202 ms
+Wall time: 2.27 s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;agency.txt&#39;,
@@ -2223,8 +2223,8 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.1 s, sys: 168 ms, total: 2.27 s
-Wall time: 2.27 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.42 s, sys: 176 ms, total: 2.59 s
+Wall time: 2.59 s
 &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 5030583 entries, 0 to 5030582
 Data columns (total 4 columns):
@@ -2336,10 +2336,76 @@ memory usage: 153.5 MB
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3min 25s, sys: 1.96 s, total: 3min 27s
+Wall time: 3min 27s
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+    </tr>
+    <tr>
+      <th>shape_id</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>LINESTRING (12.93406 52.48607, 12.93402 52.486...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>LINESTRING (13.06669 52.39081, 13.06706 52.390...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>LINESTRING (12.93406 52.48607, 12.93402 52.486...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LINESTRING (12.88516 52.61234, 12.88499 52.612...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LINESTRING (12.88516 52.61234, 12.88499 52.612...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shapes_gdf</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;geopandas.geodataframe.GeoDataFrame&#39;&gt;
+Int64Index: 14518 entries, 1 to 14518
+Data columns (total 1 columns):
+ #   Column    Non-Null Count  Dtype   
+---  ------    --------------  -----   
+ 0   geometry  14518 non-null  geometry
+dtypes: geometry(1)
+memory usage: 226.8 KB
 </pre></div>
 </div>
 </div>
@@ -2358,6 +2424,164 @@ memory usage: 153.5 MB
 <span class="n">axes</span> <span class="o">=</span> <span class="n">shapes_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">OpenStreetMap</span><span class="o">.</span><span class="n">Mapnik</span><span class="p">)</span>
 <span class="n">axes</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">timed</span> <span class="n">exec</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/contextily/plotting.py</span> in <span class="ni">add_basemap</span><span class="nt">(ax, zoom, source, interpolation, attribution, attribution_size, reset_extent, crs, resampling, url, **extra_imshow_args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>             <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>         <span class="c1"># Download image</span>
+<span class="ne">--&gt; </span><span class="mi">143</span>         <span class="n">image</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">bounds2img</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>             <span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="n">zoom</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">ll</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/contextily/tile.py</span> in <span class="ni">bounds2img</span><span class="nt">(w, s, e, n, zoom, source, ll, wait, max_retries, url)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>         <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">z</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span>         <span class="n">tile_url</span> <span class="o">=</span> <span class="n">_construct_tile_url</span><span class="p">(</span><span class="n">provider</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">248</span>         <span class="n">image</span> <span class="o">=</span> <span class="n">_fetch_tile</span><span class="p">(</span><span class="n">tile_url</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span>         <span class="n">tiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>         <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/joblib/memory.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span> 
+<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">591</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span> 
+<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/joblib/memory.py</span> in <span class="ni">_cached_call</span><span class="nt">(self, args, kwargs, shelving)</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span> 
+<span class="g g-Whitespace">    </span><span class="mi">533</span>         <span class="k">if</span> <span class="n">must_call</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">534</span>             <span class="n">out</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mmap_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>                 <span class="c1"># Memmap the output at the first call to be consistent with</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/joblib/memory.py</span> in <span class="ni">call</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>             <span class="nb">print</span><span class="p">(</span><span class="n">format_call</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">761</span>         <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span>         <span class="bp">self</span><span class="o">.</span><span class="n">store_backend</span><span class="o">.</span><span class="n">dump_item</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>             <span class="p">[</span><span class="n">func_id</span><span class="p">,</span> <span class="n">args_id</span><span class="p">],</span> <span class="n">output</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/contextily/tile.py</span> in <span class="ni">_fetch_tile</span><span class="nt">(tile_url, wait, max_retries)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span> <span class="nd">@memory</span><span class="o">.</span><span class="n">cache</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span> <span class="k">def</span> <span class="nf">_fetch_tile</span><span class="p">(</span><span class="n">tile_url</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">303</span>     <span class="n">request</span> <span class="o">=</span> <span class="n">_retryer</span><span class="p">(</span><span class="n">tile_url</span><span class="p">,</span> <span class="n">wait</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="k">as</span> <span class="n">image_stream</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image_stream</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGBA&quot;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/contextily/tile.py</span> in <span class="ni">_retryer</span><span class="nt">(tile_url, wait, max_retries)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">     try:</span>
+<span class="ne">--&gt; </span><span class="mi">446</span><span class="s2">         request = requests.get(tile_url, headers={&quot;user-agent&quot;: USER_AGENT})</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">         request.raise_for_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">     except requests.HTTPError:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="s2">     kwargs.setdefault(&#39;allow_redirects&#39;, True)</span>
+<span class="ne">---&gt; </span><span class="mi">76</span><span class="s2">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2"> </span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span><span class="s2">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="s2">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">542</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span><span class="s2">         return resp</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span><span class="s2">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">655</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">657</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span><span class="s2">             if not chunked:</span>
+<span class="ne">--&gt; </span><span class="mi">439</span><span class="s2">                 resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span><span class="s2">                     method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="s2">                     url=url,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span><span class="s2">             # Make the request on the httplib connection object.</span>
+<span class="ne">--&gt; </span><span class="mi">699</span><span class="s2">             httplib_response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span><span class="s2">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2">                 method,</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">                     # Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2">                     # Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">445</span><span class="s2">                     six.raise_from(e, None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">         except (SocketTimeout, BaseSSLError, SocketError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span><span class="s2">                 # Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span><span class="s2">                 try:</span>
+<span class="ne">--&gt; </span><span class="mi">440</span><span class="s2">                     httplib_response = conn.getresponse()</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span><span class="s2">                 except BaseException as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                     # Remove the TypeError from the exception chain in</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1342</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1343</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1344</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1345</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1346</span><span class="s2">                 self.close()</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">307</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="s2">                 break</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">268</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">669</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span><span class="s2">                 self._timeout_occurred = True</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1239</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1241</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">1099</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span><span class="s2">                 return self._sslobj.read(len)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

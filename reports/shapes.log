@@ -28,14 +28,13 @@ Traceback (most recent call last):
     await self._async_handle_timeout(timeout, cell)
   File "/opt/hostedtoolcache/Python/3.8.10/x64/lib/python3.8/site-packages/nbclient/client.py", line 696, in _async_handle_timeout
     raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 120 seconds.
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 360 seconds.
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
 %%time
-shapes_gdf = gpd.GeoDataFrame(shapes, geometry = gpd.points_from_xy(shapes['shape_pt_lon'], shapes['shape_pt_lat']))
-shapes_gdf = shapes_gdf.groupby(['shape_id'])['geometry'].apply(lambda x: LineString(x.tolist()))
-shapes_gdf = gpd.GeoDataFrame(shapes_gdf, geometry='geometry')
-shapes_gdf.head()
+axes = shapes_gdf.plot(linewidth=0.2)
+ctx.add_basemap(axes, zoom=12, source=ctx.providers.OpenStreetMap.Mapnik)
+axes.set_axis_off()
 -------------------
 
