@@ -1,4 +1,4 @@
-file: README
+file: index
 sections:
 - file: routes
 - file: shapes
