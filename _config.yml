@@ -3,7 +3,7 @@ author: CodeBard
 only_build_toc_files: true
 
 execute:
-  timeout: 120
+  timeout: 360
 
 repository:
   url: https://github.com/codebardian/vbb-gtfs
