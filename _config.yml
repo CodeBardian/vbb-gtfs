@@ -1,0 +1,9 @@
+title: "VBB GTFS Data Exploration"
+author: CodeBard
+only_build_toc_files: true
+
+execute:
+  timeout: 120
+
+repository:
+  url: https://github.com/codebardian/vbb-gtfs

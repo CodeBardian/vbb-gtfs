@@ -8,3 +8,5 @@ mplleaflet==0.0.5
 folium==0.12.1
 holoviews==1.14.3
 datashader==0.12.1
+geopandas==0.9.
+jupyter-book==0.10.2

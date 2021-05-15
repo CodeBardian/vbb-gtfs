@@ -1,0 +1,6 @@
+file: README
+sections:
+- file: routes
+- file: shapes
+- file: stops
+- file: trips
