@@ -207,26 +207,19 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-plotting">
-   Setup Plotting
+  <a class="reference internal nav-link" href="#read-and-format-data">
+   Read and format data
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#read-and-format-data">
-     Read and format data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stations-with-most-arriving-trips">
-     Stations with most arriving trips
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stations-with-most-arriving-routes">
-     Stations with most arriving routes
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stations-with-most-arriving-trips">
+   Stations with most arriving trips
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stations-with-most-arriving-routes">
+   Stations with most arriving routes
+  </a>
  </li>
 </ul>
 
@@ -245,55 +238,15 @@
 <h2>Downloads + Imports<a class="headerlink" href="#downloads-imports" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.vbb.de/media/download/2029</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-
-<span class="n">resp</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s2">&quot;https://www.vbb.de/media/download/2029&quot;</span><span class="p">)</span>
-<span class="o">%</span><span class="k">time</span> zipfile = ZipFile(BytesIO(resp.read()))
-<span class="n">zipfile</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> &quot;setup.ipynb&quot;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 107 ms, sys: 102 ms, total: 208 ms
-Wall time: 2.83 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 72.3 ms, sys: 94.2 ms, total: 166 ms
+Wall time: 3.15 s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;agency.txt&#39;,
- &#39;calendar.txt&#39;,
- &#39;calendar_dates.txt&#39;,
- &#39;frequencies.txt&#39;,
- &#39;pathways.txt&#39;,
- &#39;routes.txt&#39;,
- &#39;shapes.txt&#39;,
- &#39;stop_times.txt&#39;,
- &#39;stops.txt&#39;,
- &#39;transfers.txt&#39;,
- &#39;trips.txt&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import sys</span>
-<span class="c1">#!{sys.executable} -m pip install datashader</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">mplleaflet</span>
-<span class="kn">import</span> <span class="nn">folium</span>
-<span class="kn">import</span> <span class="nn">holoviews</span> <span class="k">as</span> <span class="nn">hv</span>
-<span class="kn">import</span> <span class="nn">holoviews.operation.datashader</span> <span class="k">as</span> <span class="nn">hd</span>
-<span class="n">hd</span><span class="o">.</span><span class="n">shade</span><span class="o">.</span><span class="n">cmap</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">]</span>
-<span class="n">hv</span><span class="o">.</span><span class="n">extension</span><span class="p">(</span><span class="s2">&quot;bokeh&quot;</span><span class="p">,</span> <span class="s2">&quot;matplotlib&quot;</span><span class="p">)</span> 
-<span class="kn">import</span> <span class="nn">datashader</span> <span class="k">as</span> <span class="nn">ds</span>
-<span class="kn">import</span> <span class="nn">datashader.transfer_functions</span> <span class="k">as</span> <span class="nn">tf</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
 <script type="application/javascript">
 (function(root) {
   function now() {
@@ -417,25 +370,25 @@ Wall time: 2.83 s
   var css_urls = ["https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator_simple.min.css"];
   var inline_js = [
     function(Bokeh) {
-      inject_raw_css(".bk.pn-loading:before {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  content: '';\n  z-index: 1000;\n  background-color: rgb(255,255,255,0.50);\n  border-color: lightgray;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 50%;\n  border-width: 1px;\n  cursor: progress;\n}\n.bk.pn-loading.arcs:hover:before {\n  cursor: progress;\n}\n");
+      inject_raw_css(".bk.alert {\n    padding: 0.75rem 1.25rem;\n    border: 1px solid transparent;\n    border-radius: 0.25rem;\n    /* Don't set margin because that will not render correctly! */\n    /* margin-bottom: 1rem; */\n    margin-top: 15px;\n    margin-bottom: 15px;\n}\n.bk.alert a {\n    color: rgb(11, 46, 19); /* #002752; */\n    font-weight: 700;\n    text-decoration: rgb(11, 46, 19);\n    text-decoration-color: rgb(11, 46, 19);\n    text-decoration-line: none;\n    text-decoration-style: solid;\n    text-decoration-thickness: auto;\n  }\n.bk.alert a:hover {\n    color: rgb(11, 46, 19);\n    font-weight: 700;\n    text-decoration: underline;\n}\n\n.bk.alert-primary {\n    color: #004085;\n    background-color: #cce5ff;\n    border-color: #b8daff;\n}\n.bk.alert-primary hr {\n    border-top-color: #9fcdff;\n}\n\n.bk.alert-secondary {\n    color: #383d41;\n    background-color: #e2e3e5;\n    border-color: #d6d8db;\n  }\n.bk.alert-secondary hr {\n    border-top-color: #c8cbcf;\n}\n\n.bk.alert-success {\n    color: #155724;\n    background-color: #d4edda;\n    border-color: #c3e6cb;\n  }\n\n.bk.alert-success hr {\n    border-top-color: #b1dfbb;\n}\n\n.bk.alert-info {\n    color: #0c5460;\n    background-color: #d1ecf1;\n    border-color: #bee5eb;\n  }\n.bk.alert-info hr {\n    border-top-color: #abdde5;\n}\n\n.bk.alert-warning {\n    color: #856404;\n    background-color: #fff3cd;\n    border-color: #ffeeba;\n  }\n\n.bk.alert-warning hr {\n    border-top-color: #ffe8a1;\n}\n\n.bk.alert-danger {\n    color: #721c24;\n    background-color: #f8d7da;\n    border-color: #f5c6cb;\n}\n.bk.alert-danger hr {\n    border-top-color: #f1b0b7;\n}\n\n.bk.alert-light {\n    color: #818182;\n    background-color: #fefefe;\n    border-color: #fdfdfe;\n  }\n.bk.alert-light hr {\n    border-top-color: #ececf6;\n}\n\n.bk.alert-dark {\n    color: #1b1e21;\n    background-color: #d6d8d9;\n    border-color: #c6c8ca;\n  }\n.bk.alert-dark hr {\n    border-top-color: #b9bbbe;\n}\n\n\n/* adjf\u00e6l */\n\n.bk.alert-primary a {\n    color: #002752;\n}\n\n.bk.alert-secondary a {\n    color: #202326;\n}\n\n\n.bk.alert-success a {\n    color: #0b2e13;\n}\n\n\n.bk.alert-info a {\n    color: #062c33;\n}\n\n\n.bk.alert-warning a {\n    color: #533f03;\n}\n\n\n.bk.alert-danger a {\n    color: #491217;\n}\n\n.bk.alert-light a {\n    color: #686868;\n}\n\n.bk.alert-dark a {\n    color: #040505;\n}");
+    },
+    function(Bokeh) {
+      inject_raw_css(".bk.panel-widget-box {\n  min-height: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n  overflow-x: hidden;\n  overflow-y: hidden;\n}\n\n.scrollable {\n  overflow: scroll;\n}\n\nprogress {\n  appearance: none;\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  border: none;\n  height: 20px;\n  background-color: whiteSmoke;\n  border-radius: 3px;\n  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;\n  color: royalblue;\n  position: relative;\n  margin: 0 0 1.5em;\n}\n\nprogress[value]::-webkit-progress-bar {\n  background-color: whiteSmoke;\n  border-radius: 3px;\n  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;\n}\n\nprogress[value]::-webkit-progress-value {\n  position: relative;\n  background-size: 35px 20px, 100% 100%, 100% 100%;\n  border-radius:3px;\n}\n\nprogress.active:not([value])::before {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress[value]::-moz-progress-bar {\n  background-size: 35px 20px, 100% 100%, 100% 100%;\n  border-radius:3px;\n}\n\nprogress:not([value])::-moz-progress-bar {\n  border-radius:3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\n\nprogress.active:not([value])::-moz-progress-bar {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress.active:not([value])::-webkit-progress-bar {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress.primary[value]::-webkit-progress-value { background-color: #007bff; }\nprogress.primary:not([value])::before { background-color: #007bff; }\nprogress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }\nprogress.primary::-moz-progress-bar { background-color: #007bff; }\n\nprogress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }\nprogress.secondary:not([value])::before { background-color: #6c757d; }\nprogress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }\nprogress.secondary::-moz-progress-bar { background-color: #6c757d; }\n\nprogress.success[value]::-webkit-progress-value { background-color: #28a745; }\nprogress.success:not([value])::before { background-color: #28a745; }\nprogress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }\nprogress.success::-moz-progress-bar { background-color: #28a745; }\n\nprogress.danger[value]::-webkit-progress-value { background-color: #dc3545; }\nprogress.danger:not([value])::before { background-color: #dc3545; }\nprogress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }\nprogress.danger::-moz-progress-bar { background-color: #dc3545; }\n\nprogress.warning[value]::-webkit-progress-value { background-color: #ffc107; }\nprogress.warning:not([value])::before { background-color: #ffc107; }\nprogress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }\nprogress.warning::-moz-progress-bar { background-color: #ffc107; }\n\nprogress.info[value]::-webkit-progress-value { background-color: #17a2b8; }\nprogress.info:not([value])::before { background-color: #17a2b8; }\nprogress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }\nprogress.info::-moz-progress-bar { background-color: #17a2b8; }\n\nprogress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }\nprogress.light:not([value])::before { background-color: #f8f9fa; }\nprogress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }\nprogress.light::-moz-progress-bar { background-color: #f8f9fa; }\n\nprogress.dark[value]::-webkit-progress-value { background-color: #343a40; }\nprogress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }\nprogress.dark:not([value])::before { background-color: #343a40; }\nprogress.dark::-moz-progress-bar { background-color: #343a40; }\n\nprogress:not([value])::-webkit-progress-bar {\n  border-radius: 3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\nprogress:not([value])::before {\n  content:\" \";\n  position:absolute;\n  height: 20px;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  border-radius: 3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\n\n@keyframes stripes {\n  from {background-position: 0%}\n  to {background-position: 100%}\n}\n\n.bk-root .bk.loader {\n  overflow: hidden;\n}\n\n.bk.loader::after {\n  content: \"\";\n  border-radius: 50%;\n  -webkit-mask-image: radial-gradient(transparent 50%, rgba(0, 0, 0, 1) 54%);\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  position: absolute;\n}\n\n.bk-root .bk.loader.dark::after {\n  background: #0f0f0f;\n}\n\n.bk-root .bk.loader.light::after {\n  background: #f0f0f0;\n}\n\n.bk-root .bk.loader.spin::after {\n  animation: spin 2s linear infinite;\n}\n\n.bk-root div.bk.loader.spin.primary-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #007bff 50%);\n}\n\n.bk-root div.bk.loader.spin.secondary-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #6c757d 50%);\n}\n\n.bk-root div.bk.loader.spin.success-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #28a745 50%);\n}\n\n.bk-root div.bk.loader.spin.danger-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #dc3545 50%);\n}\n\n.bk-root div.bk.loader.spin.warning-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #ffc107 50%);\n}\n\n.bk-root div.bk.loader.spin.info-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #17a2b8 50%);\n}\n\n.bk-root div.bk.loader.spin.light-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #f8f9fa 50%);\n}\n\n.bk-root div.bk.loader.dark-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #343a40 50%);\n}\n\n.bk-root div.bk.loader.spin.primary-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #007bff 50%);\n}\n\n.bk-root div.bk.loader.spin.secondary-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #6c757d 50%);\n}\n\n.bk-root div.bk.loader.spin.success-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #28a745 50%);\n}\n\n.bk-root div.bk.loader.spin.danger-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #dc3545 50%)\n}\n\n.bk-root div.bk.loader.spin.warning-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #ffc107 50%);\n}\n\n.bk-root div.bk.loader.spin.info-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #17a2b8 50%);\n}\n\n.bk-root div.bk.loader.spin.light-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #f8f9fa 50%);\n}\n\n.bk-root div.bk.loader.spin.dark-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #343a40 50%);\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% { -webkit-transform: rotate(0deg); }\n  100% { -webkit-transform: rotate(360deg); }\n}\n\n@keyframes spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n\n.dot div {\n  height: 100%;\n  width: 100%;\n  border: 1px solid #000 !important;\n  background-color: #fff;\n  border-radius: 50%;\n  display: inline-block;\n}\n\n.dot-filled div {\n  height: 100%;\n  width: 100%;\n  border: 1px solid #000 !important;\n  border-radius: 50%;\n  display: inline-block;\n}\n\n.dot-filled.primary div {\n  background-color: #007bff;\n}\n\n.dot-filled.secondary div {\n  background-color: #6c757d;\n}\n\n.dot-filled.success div {\n  background-color: #28a745;\n}\n\n.dot-filled.danger div {\n  background-color: #dc3545;\n}\n\n.dot-filled.warning div {\n  background-color: #ffc107;\n}\n\n.dot-filled.info div {\n  background-color: #17a2b8;\n}\n\n.dot-filled.dark div {\n  background-color: #343a40;\n}\n\n.dot-filled.light div {\n  background-color: #f8f9fa;\n}\n");
     },
     function(Bokeh) {
       inject_raw_css(".codehilite .hll { background-color: #ffffcc }\n.codehilite  { background: #f8f8f8; }\n.codehilite .c { color: #408080; font-style: italic } /* Comment */\n.codehilite .err { border: 1px solid #FF0000 } /* Error */\n.codehilite .k { color: #008000; font-weight: bold } /* Keyword */\n.codehilite .o { color: #666666 } /* Operator */\n.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */\n.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */\n.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */\n.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */\n.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */\n.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */\n.codehilite .gd { color: #A00000 } /* Generic.Deleted */\n.codehilite .ge { font-style: italic } /* Generic.Emph */\n.codehilite .gr { color: #FF0000 } /* Generic.Error */\n.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */\n.codehilite .gi { color: #00A000 } /* Generic.Inserted */\n.codehilite .go { color: #888888 } /* Generic.Output */\n.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */\n.codehilite .gs { font-weight: bold } /* Generic.Strong */\n.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */\n.codehilite .gt { color: #0044DD } /* Generic.Traceback */\n.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */\n.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */\n.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */\n.codehilite .kp { color: #008000 } /* Keyword.Pseudo */\n.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */\n.codehilite .kt { color: #B00040 } /* Keyword.Type */\n.codehilite .m { color: #666666 } /* Literal.Number */\n.codehilite .s { color: #BA2121 } /* Literal.String */\n.codehilite .na { color: #7D9029 } /* Name.Attribute */\n.codehilite .nb { color: #008000 } /* Name.Builtin */\n.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */\n.codehilite .no { color: #880000 } /* Name.Constant */\n.codehilite .nd { color: #AA22FF } /* Name.Decorator */\n.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */\n.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */\n.codehilite .nf { color: #0000FF } /* Name.Function */\n.codehilite .nl { color: #A0A000 } /* Name.Label */\n.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */\n.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */\n.codehilite .nv { color: #19177C } /* Name.Variable */\n.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */\n.codehilite .w { color: #bbbbbb } /* Text.Whitespace */\n.codehilite .mb { color: #666666 } /* Literal.Number.Bin */\n.codehilite .mf { color: #666666 } /* Literal.Number.Float */\n.codehilite .mh { color: #666666 } /* Literal.Number.Hex */\n.codehilite .mi { color: #666666 } /* Literal.Number.Integer */\n.codehilite .mo { color: #666666 } /* Literal.Number.Oct */\n.codehilite .sa { color: #BA2121 } /* Literal.String.Affix */\n.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */\n.codehilite .sc { color: #BA2121 } /* Literal.String.Char */\n.codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */\n.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */\n.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */\n.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */\n.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */\n.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */\n.codehilite .sx { color: #008000 } /* Literal.String.Other */\n.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */\n.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */\n.codehilite .ss { color: #19177C } /* Literal.String.Symbol */\n.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */\n.codehilite .fm { color: #0000FF } /* Name.Function.Magic */\n.codehilite .vc { color: #19177C } /* Name.Variable.Class */\n.codehilite .vg { color: #19177C } /* Name.Variable.Global */\n.codehilite .vi { color: #19177C } /* Name.Variable.Instance */\n.codehilite .vm { color: #19177C } /* Name.Variable.Magic */\n.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */\n\n.markdown h1 { margin-block-start: 0.34em }\n.markdown h2 { margin-block-start: 0.42em }\n.markdown h3 { margin-block-start: 0.5em }\n.markdown h4 { margin-block-start: 0.67em }\n.markdown h5 { margin-block-start: 0.84em }\n.markdown h6 { margin-block-start: 1.17em }\n.markdown ul { padding-inline-start: 2em }\n.markdown ol { padding-inline-start: 2em }\n.markdown strong { font-weight: 600 }\n.markdown a { color: -webkit-link }\n.markdown a { color: -moz-hyperlinkText }\n");
     },
     function(Bokeh) {
-      inject_raw_css(".bk.alert {\n    padding: 0.75rem 1.25rem;\n    border: 1px solid transparent;\n    border-radius: 0.25rem;\n    /* Don't set margin because that will not render correctly! */\n    /* margin-bottom: 1rem; */\n    margin-top: 15px;\n    margin-bottom: 15px;\n}\n.bk.alert a {\n    color: rgb(11, 46, 19); /* #002752; */\n    font-weight: 700;\n    text-decoration: rgb(11, 46, 19);\n    text-decoration-color: rgb(11, 46, 19);\n    text-decoration-line: none;\n    text-decoration-style: solid;\n    text-decoration-thickness: auto;\n  }\n.bk.alert a:hover {\n    color: rgb(11, 46, 19);\n    font-weight: 700;\n    text-decoration: underline;\n}\n\n.bk.alert-primary {\n    color: #004085;\n    background-color: #cce5ff;\n    border-color: #b8daff;\n}\n.bk.alert-primary hr {\n    border-top-color: #9fcdff;\n}\n\n.bk.alert-secondary {\n    color: #383d41;\n    background-color: #e2e3e5;\n    border-color: #d6d8db;\n  }\n.bk.alert-secondary hr {\n    border-top-color: #c8cbcf;\n}\n\n.bk.alert-success {\n    color: #155724;\n    background-color: #d4edda;\n    border-color: #c3e6cb;\n  }\n\n.bk.alert-success hr {\n    border-top-color: #b1dfbb;\n}\n\n.bk.alert-info {\n    color: #0c5460;\n    background-color: #d1ecf1;\n    border-color: #bee5eb;\n  }\n.bk.alert-info hr {\n    border-top-color: #abdde5;\n}\n\n.bk.alert-warning {\n    color: #856404;\n    background-color: #fff3cd;\n    border-color: #ffeeba;\n  }\n\n.bk.alert-warning hr {\n    border-top-color: #ffe8a1;\n}\n\n.bk.alert-danger {\n    color: #721c24;\n    background-color: #f8d7da;\n    border-color: #f5c6cb;\n}\n.bk.alert-danger hr {\n    border-top-color: #f1b0b7;\n}\n\n.bk.alert-light {\n    color: #818182;\n    background-color: #fefefe;\n    border-color: #fdfdfe;\n  }\n.bk.alert-light hr {\n    border-top-color: #ececf6;\n}\n\n.bk.alert-dark {\n    color: #1b1e21;\n    background-color: #d6d8d9;\n    border-color: #c6c8ca;\n  }\n.bk.alert-dark hr {\n    border-top-color: #b9bbbe;\n}\n\n\n/* adjf\u00e6l */\n\n.bk.alert-primary a {\n    color: #002752;\n}\n\n.bk.alert-secondary a {\n    color: #202326;\n}\n\n\n.bk.alert-success a {\n    color: #0b2e13;\n}\n\n\n.bk.alert-info a {\n    color: #062c33;\n}\n\n\n.bk.alert-warning a {\n    color: #533f03;\n}\n\n\n.bk.alert-danger a {\n    color: #491217;\n}\n\n.bk.alert-light a {\n    color: #686868;\n}\n\n.bk.alert-dark a {\n    color: #040505;\n}");
-    },
-    function(Bokeh) {
-      inject_raw_css(".json-formatter-row {\n  font-family: monospace;\n}\n.json-formatter-row,\n.json-formatter-row a,\n.json-formatter-row a:hover {\n  color: black;\n  text-decoration: none;\n}\n.json-formatter-row .json-formatter-row {\n  margin-left: 1rem;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty {\n  opacity: 0.5;\n  margin-left: 1rem;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty:after {\n  display: none;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {\n  content: \"No properties\";\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {\n  content: \"[]\";\n}\n.json-formatter-row .json-formatter-string,\n.json-formatter-row .json-formatter-stringifiable {\n  color: green;\n  white-space: pre;\n  word-wrap: break-word;\n}\n.json-formatter-row .json-formatter-number {\n  color: blue;\n}\n.json-formatter-row .json-formatter-boolean {\n  color: red;\n}\n.json-formatter-row .json-formatter-null {\n  color: #855A00;\n}\n.json-formatter-row .json-formatter-undefined {\n  color: #ca0b69;\n}\n.json-formatter-row .json-formatter-function {\n  color: #FF20ED;\n}\n.json-formatter-row .json-formatter-date {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.json-formatter-row .json-formatter-url {\n  text-decoration: underline;\n  color: blue;\n  cursor: pointer;\n}\n.json-formatter-row .json-formatter-bracket {\n  color: blue;\n}\n.json-formatter-row .json-formatter-key {\n  color: #00008B;\n  padding-right: 0.2rem;\n}\n.json-formatter-row .json-formatter-toggler-link {\n  cursor: pointer;\n}\n.json-formatter-row .json-formatter-toggler {\n  line-height: 1.2rem;\n  font-size: 0.7rem;\n  vertical-align: middle;\n  opacity: 0.6;\n  cursor: pointer;\n  padding-right: 0.2rem;\n}\n.json-formatter-row .json-formatter-toggler:after {\n  display: inline-block;\n  transition: transform 100ms ease-in;\n  content: \"\\25BA\";\n}\n.json-formatter-row > a > .json-formatter-preview-text {\n  opacity: 0;\n  transition: opacity 0.15s ease-in;\n  font-style: italic;\n}\n.json-formatter-row:hover > a > .json-formatter-preview-text {\n  opacity: 0.6;\n}\n.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {\n  transform: rotate(90deg);\n}\n.json-formatter-row.json-formatter-open > .json-formatter-children:after {\n  display: inline-block;\n}\n.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {\n  display: none;\n}\n.json-formatter-row.json-formatter-open.json-formatter-empty:after {\n  display: block;\n}\n.json-formatter-dark.json-formatter-row {\n  font-family: monospace;\n}\n.json-formatter-dark.json-formatter-row,\n.json-formatter-dark.json-formatter-row a,\n.json-formatter-dark.json-formatter-row a:hover {\n  color: white;\n  text-decoration: none;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-row {\n  margin-left: 1rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {\n  opacity: 0.5;\n  margin-left: 1rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {\n  display: none;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {\n  content: \"No properties\";\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {\n  content: \"[]\";\n}\n.json-formatter-dark.json-formatter-row .json-formatter-string,\n.json-formatter-dark.json-formatter-row .json-formatter-stringifiable {\n  color: #31F031;\n  white-space: pre;\n  word-wrap: break-word;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-number {\n  color: #66C2FF;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-boolean {\n  color: #EC4242;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-null {\n  color: #EEC97D;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-undefined {\n  color: #ef8fbe;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-function {\n  color: #FD48CB;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-date {\n  background-color: rgba(255, 255, 255, 0.05);\n}\n.json-formatter-dark.json-formatter-row .json-formatter-url {\n  text-decoration: underline;\n  color: #027BFF;\n  cursor: pointer;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-bracket {\n  color: #9494FF;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-key {\n  color: #23A0DB;\n  padding-right: 0.2rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler-link {\n  cursor: pointer;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler {\n  line-height: 1.2rem;\n  font-size: 0.7rem;\n  vertical-align: middle;\n  opacity: 0.6;\n  cursor: pointer;\n  padding-right: 0.2rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler:after {\n  display: inline-block;\n  transition: transform 100ms ease-in;\n  content: \"\\25BA\";\n}\n.json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {\n  opacity: 0;\n  transition: opacity 0.15s ease-in;\n  font-style: italic;\n}\n.json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {\n  opacity: 0.6;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {\n  transform: rotate(90deg);\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {\n  display: inline-block;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {\n  display: none;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {\n  display: block;\n}\n");
+      inject_raw_css(".bk.pn-loading:before {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  content: '';\n  z-index: 1000;\n  background-color: rgb(255,255,255,0.50);\n  border-color: lightgray;\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 50%;\n  border-width: 1px;\n  cursor: progress;\n}\n.bk.pn-loading.arcs:hover:before {\n  cursor: progress;\n}\n");
     },
     function(Bokeh) {
       inject_raw_css(".bk.card {\n  border: 1px solid rgba(0,0,0,.125);\n  border-radius: 0.25rem;\n}\n.bk.accordion {\n  border: 1px solid rgba(0,0,0,.125);\n}\n.bk.card-header {\n  align-items: center;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 0.25rem;\n  display: flex;\n  justify-content: space-between;\n  padding: 0 1.25rem 0 0;\n  width: 100%;\n}\n.bk.accordion-header {\n  align-items: center;\n  background-color: rgba(0, 0, 0, 0.03);\n  border-radius: 0;\n  display: flex;\n  justify-content: space-between;\n  padding: 0 1.25rem 0 0;\n  width: 100%;\n}\np.bk.card-button {\n  background-color: transparent;\n  font-size: 1.25rem;\n  font-weight: 700;\n  margin: 0;\n  margin-left: -15px;\n}\n.bk.card-header-row {\n  position: relative !important;\n}\n.bk.card-title {\n  align-items: center;\n  display: flex !important;\n  font-size: 1.4em;\n  font-weight: bold;\n  padding: 0.25em;\n  position: relative !important;\n}\n");
     },
     function(Bokeh) {
-      inject_raw_css("table.panel-df {\n    margin-left: auto;\n    margin-right: auto;\n    border: none;\n    border-collapse: collapse;\n    border-spacing: 0;\n    color: black;\n    font-size: 12px;\n    table-layout: fixed;\n    width: 100%;\n}\n\n.panel-df tr, .panel-df th, .panel-df td {\n    text-align: right;\n    vertical-align: middle;\n    padding: 0.5em 0.5em !important;\n    line-height: normal;\n    white-space: normal;\n    max-width: none;\n    border: none;\n}\n\n.panel-df tbody {\n    display: table-row-group;\n    vertical-align: middle;\n    border-color: inherit;\n}\n\n.panel-df tbody tr:nth-child(odd) {\n    background: #f5f5f5;\n}\n\n.panel-df thead {\n    border-bottom: 1px solid black;\n    vertical-align: bottom;\n}\n\n.panel-df tr:hover {\n    background: lightblue !important;\n    cursor: pointer;\n}\n");
+      inject_raw_css(".json-formatter-row {\n  font-family: monospace;\n}\n.json-formatter-row,\n.json-formatter-row a,\n.json-formatter-row a:hover {\n  color: black;\n  text-decoration: none;\n}\n.json-formatter-row .json-formatter-row {\n  margin-left: 1rem;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty {\n  opacity: 0.5;\n  margin-left: 1rem;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty:after {\n  display: none;\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {\n  content: \"No properties\";\n}\n.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {\n  content: \"[]\";\n}\n.json-formatter-row .json-formatter-string,\n.json-formatter-row .json-formatter-stringifiable {\n  color: green;\n  white-space: pre;\n  word-wrap: break-word;\n}\n.json-formatter-row .json-formatter-number {\n  color: blue;\n}\n.json-formatter-row .json-formatter-boolean {\n  color: red;\n}\n.json-formatter-row .json-formatter-null {\n  color: #855A00;\n}\n.json-formatter-row .json-formatter-undefined {\n  color: #ca0b69;\n}\n.json-formatter-row .json-formatter-function {\n  color: #FF20ED;\n}\n.json-formatter-row .json-formatter-date {\n  background-color: rgba(0, 0, 0, 0.05);\n}\n.json-formatter-row .json-formatter-url {\n  text-decoration: underline;\n  color: blue;\n  cursor: pointer;\n}\n.json-formatter-row .json-formatter-bracket {\n  color: blue;\n}\n.json-formatter-row .json-formatter-key {\n  color: #00008B;\n  padding-right: 0.2rem;\n}\n.json-formatter-row .json-formatter-toggler-link {\n  cursor: pointer;\n}\n.json-formatter-row .json-formatter-toggler {\n  line-height: 1.2rem;\n  font-size: 0.7rem;\n  vertical-align: middle;\n  opacity: 0.6;\n  cursor: pointer;\n  padding-right: 0.2rem;\n}\n.json-formatter-row .json-formatter-toggler:after {\n  display: inline-block;\n  transition: transform 100ms ease-in;\n  content: \"\\25BA\";\n}\n.json-formatter-row > a > .json-formatter-preview-text {\n  opacity: 0;\n  transition: opacity 0.15s ease-in;\n  font-style: italic;\n}\n.json-formatter-row:hover > a > .json-formatter-preview-text {\n  opacity: 0.6;\n}\n.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {\n  transform: rotate(90deg);\n}\n.json-formatter-row.json-formatter-open > .json-formatter-children:after {\n  display: inline-block;\n}\n.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {\n  display: none;\n}\n.json-formatter-row.json-formatter-open.json-formatter-empty:after {\n  display: block;\n}\n.json-formatter-dark.json-formatter-row {\n  font-family: monospace;\n}\n.json-formatter-dark.json-formatter-row,\n.json-formatter-dark.json-formatter-row a,\n.json-formatter-dark.json-formatter-row a:hover {\n  color: white;\n  text-decoration: none;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-row {\n  margin-left: 1rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {\n  opacity: 0.5;\n  margin-left: 1rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {\n  display: none;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {\n  content: \"No properties\";\n}\n.json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {\n  content: \"[]\";\n}\n.json-formatter-dark.json-formatter-row .json-formatter-string,\n.json-formatter-dark.json-formatter-row .json-formatter-stringifiable {\n  color: #31F031;\n  white-space: pre;\n  word-wrap: break-word;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-number {\n  color: #66C2FF;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-boolean {\n  color: #EC4242;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-null {\n  color: #EEC97D;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-undefined {\n  color: #ef8fbe;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-function {\n  color: #FD48CB;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-date {\n  background-color: rgba(255, 255, 255, 0.05);\n}\n.json-formatter-dark.json-formatter-row .json-formatter-url {\n  text-decoration: underline;\n  color: #027BFF;\n  cursor: pointer;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-bracket {\n  color: #9494FF;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-key {\n  color: #23A0DB;\n  padding-right: 0.2rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler-link {\n  cursor: pointer;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler {\n  line-height: 1.2rem;\n  font-size: 0.7rem;\n  vertical-align: middle;\n  opacity: 0.6;\n  cursor: pointer;\n  padding-right: 0.2rem;\n}\n.json-formatter-dark.json-formatter-row .json-formatter-toggler:after {\n  display: inline-block;\n  transition: transform 100ms ease-in;\n  content: \"\\25BA\";\n}\n.json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {\n  opacity: 0;\n  transition: opacity 0.15s ease-in;\n  font-style: italic;\n}\n.json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {\n  opacity: 0.6;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {\n  transform: rotate(90deg);\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {\n  display: inline-block;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {\n  display: none;\n}\n.json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {\n  display: block;\n}\n");
     },
     function(Bokeh) {
-      inject_raw_css(".bk.panel-widget-box {\n  min-height: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);\n  overflow-x: hidden;\n  overflow-y: hidden;\n}\n\n.scrollable {\n  overflow: scroll;\n}\n\nprogress {\n  appearance: none;\n  -moz-appearance: none;\n  -webkit-appearance: none;\n  border: none;\n  height: 20px;\n  background-color: whiteSmoke;\n  border-radius: 3px;\n  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;\n  color: royalblue;\n  position: relative;\n  margin: 0 0 1.5em;\n}\n\nprogress[value]::-webkit-progress-bar {\n  background-color: whiteSmoke;\n  border-radius: 3px;\n  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;\n}\n\nprogress[value]::-webkit-progress-value {\n  position: relative;\n  background-size: 35px 20px, 100% 100%, 100% 100%;\n  border-radius:3px;\n}\n\nprogress.active:not([value])::before {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress[value]::-moz-progress-bar {\n  background-size: 35px 20px, 100% 100%, 100% 100%;\n  border-radius:3px;\n}\n\nprogress:not([value])::-moz-progress-bar {\n  border-radius:3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\n\nprogress.active:not([value])::-moz-progress-bar {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress.active:not([value])::-webkit-progress-bar {\n  background-position: 10%;\n  animation-name: stripes;\n  animation-duration: 3s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n}\n\nprogress.primary[value]::-webkit-progress-value { background-color: #007bff; }\nprogress.primary:not([value])::before { background-color: #007bff; }\nprogress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }\nprogress.primary::-moz-progress-bar { background-color: #007bff; }\n\nprogress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }\nprogress.secondary:not([value])::before { background-color: #6c757d; }\nprogress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }\nprogress.secondary::-moz-progress-bar { background-color: #6c757d; }\n\nprogress.success[value]::-webkit-progress-value { background-color: #28a745; }\nprogress.success:not([value])::before { background-color: #28a745; }\nprogress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }\nprogress.success::-moz-progress-bar { background-color: #28a745; }\n\nprogress.danger[value]::-webkit-progress-value { background-color: #dc3545; }\nprogress.danger:not([value])::before { background-color: #dc3545; }\nprogress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }\nprogress.danger::-moz-progress-bar { background-color: #dc3545; }\n\nprogress.warning[value]::-webkit-progress-value { background-color: #ffc107; }\nprogress.warning:not([value])::before { background-color: #ffc107; }\nprogress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }\nprogress.warning::-moz-progress-bar { background-color: #ffc107; }\n\nprogress.info[value]::-webkit-progress-value { background-color: #17a2b8; }\nprogress.info:not([value])::before { background-color: #17a2b8; }\nprogress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }\nprogress.info::-moz-progress-bar { background-color: #17a2b8; }\n\nprogress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }\nprogress.light:not([value])::before { background-color: #f8f9fa; }\nprogress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }\nprogress.light::-moz-progress-bar { background-color: #f8f9fa; }\n\nprogress.dark[value]::-webkit-progress-value { background-color: #343a40; }\nprogress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }\nprogress.dark:not([value])::before { background-color: #343a40; }\nprogress.dark::-moz-progress-bar { background-color: #343a40; }\n\nprogress:not([value])::-webkit-progress-bar {\n  border-radius: 3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\nprogress:not([value])::before {\n  content:\" \";\n  position:absolute;\n  height: 20px;\n  top:0;\n  left:0;\n  right:0;\n  bottom:0;\n  border-radius: 3px;\n  background: linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;\n}\n\n@keyframes stripes {\n  from {background-position: 0%}\n  to {background-position: 100%}\n}\n\n.bk-root .bk.loader {\n  overflow: hidden;\n}\n\n.bk.loader::after {\n  content: \"\";\n  border-radius: 50%;\n  -webkit-mask-image: radial-gradient(transparent 50%, rgba(0, 0, 0, 1) 54%);\n  width: 100%;\n  height: 100%;\n  left: 0;\n  top: 0;\n  position: absolute;\n}\n\n.bk-root .bk.loader.dark::after {\n  background: #0f0f0f;\n}\n\n.bk-root .bk.loader.light::after {\n  background: #f0f0f0;\n}\n\n.bk-root .bk.loader.spin::after {\n  animation: spin 2s linear infinite;\n}\n\n.bk-root div.bk.loader.spin.primary-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #007bff 50%);\n}\n\n.bk-root div.bk.loader.spin.secondary-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #6c757d 50%);\n}\n\n.bk-root div.bk.loader.spin.success-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #28a745 50%);\n}\n\n.bk-root div.bk.loader.spin.danger-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #dc3545 50%);\n}\n\n.bk-root div.bk.loader.spin.warning-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #ffc107 50%);\n}\n\n.bk-root div.bk.loader.spin.info-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #17a2b8 50%);\n}\n\n.bk-root div.bk.loader.spin.light-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #f8f9fa 50%);\n}\n\n.bk-root div.bk.loader.dark-light::after {\n  background: linear-gradient(135deg, #f0f0f0 50%, transparent 50%), linear-gradient(45deg, #f0f0f0 50%, #343a40 50%);\n}\n\n.bk-root div.bk.loader.spin.primary-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #007bff 50%);\n}\n\n.bk-root div.bk.loader.spin.secondary-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #6c757d 50%);\n}\n\n.bk-root div.bk.loader.spin.success-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #28a745 50%);\n}\n\n.bk-root div.bk.loader.spin.danger-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #dc3545 50%)\n}\n\n.bk-root div.bk.loader.spin.warning-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #ffc107 50%);\n}\n\n.bk-root div.bk.loader.spin.info-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #17a2b8 50%);\n}\n\n.bk-root div.bk.loader.spin.light-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #f8f9fa 50%);\n}\n\n.bk-root div.bk.loader.spin.dark-dark::after {\n  background: linear-gradient(135deg, #0f0f0f 50%, transparent 50%), linear-gradient(45deg, #0f0f0f 50%, #343a40 50%);\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% { -webkit-transform: rotate(0deg); }\n  100% { -webkit-transform: rotate(360deg); }\n}\n\n@keyframes spin {\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n}\n\n.dot div {\n  height: 100%;\n  width: 100%;\n  border: 1px solid #000 !important;\n  background-color: #fff;\n  border-radius: 50%;\n  display: inline-block;\n}\n\n.dot-filled div {\n  height: 100%;\n  width: 100%;\n  border: 1px solid #000 !important;\n  border-radius: 50%;\n  display: inline-block;\n}\n\n.dot-filled.primary div {\n  background-color: #007bff;\n}\n\n.dot-filled.secondary div {\n  background-color: #6c757d;\n}\n\n.dot-filled.success div {\n  background-color: #28a745;\n}\n\n.dot-filled.danger div {\n  background-color: #dc3545;\n}\n\n.dot-filled.warning div {\n  background-color: #ffc107;\n}\n\n.dot-filled.info div {\n  background-color: #17a2b8;\n}\n\n.dot-filled.dark div {\n  background-color: #343a40;\n}\n\n.dot-filled.light div {\n  background-color: #f8f9fa;\n}\n");
+      inject_raw_css("table.panel-df {\n    margin-left: auto;\n    margin-right: auto;\n    border: none;\n    border-collapse: collapse;\n    border-spacing: 0;\n    color: black;\n    font-size: 12px;\n    table-layout: fixed;\n    width: 100%;\n}\n\n.panel-df tr, .panel-df th, .panel-df td {\n    text-align: right;\n    vertical-align: middle;\n    padding: 0.5em 0.5em !important;\n    line-height: normal;\n    white-space: normal;\n    max-width: none;\n    border: none;\n}\n\n.panel-df tbody {\n    display: table-row-group;\n    vertical-align: middle;\n    border-color: inherit;\n}\n\n.panel-df tbody tr:nth-child(odd) {\n    background: #f5f5f5;\n}\n\n.panel-df thead {\n    border-bottom: 1px solid black;\n    vertical-align: bottom;\n}\n\n.panel-df tr:hover {\n    background: lightblue !important;\n    cursor: pointer;\n}\n");
     },
     function(Bokeh) {
       inject_raw_css("\n    .bk.pn-loading.arcs:before {\n      background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiBub25lOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4gIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjMyIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZT0iI2MzYzNjMyIgc3Ryb2tlLWRhc2hhcnJheT0iNTAuMjY1NDgyNDU3NDM2NjkgNTAuMjY1NDgyNDU3NDM2NjkiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+ICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgZHVyPSIxcyIga2V5VGltZXM9IjA7MSIgdmFsdWVzPSIwIDUwIDUwOzM2MCA1MCA1MCI+PC9hbmltYXRlVHJhbnNmb3JtPiAgPC9jaXJjbGU+PC9zdmc+\")\n    }\n    ");
@@ -1885,34 +1838,310 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 
 
 </div>
-</div></div>
-</div>
-</div>
-<div class="section" id="setup-plotting">
-<h2>Setup Plotting<a class="headerlink" href="#setup-plotting" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span>
-    <span class="n">style</span><span class="o">=</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">,</span> 
-    <span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;axes.facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;.9&#39;</span><span class="p">,</span> <span class="s1">&#39;grid.color&#39;</span><span class="p">:</span> <span class="s1">&#39;.8&#39;</span><span class="p">}</span>
-<span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
-<span class="n">sns_c</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">register_matplotlib_converters</span>
-<span class="n">register_matplotlib_converters</span><span class="p">()</span>
+</div><div class="output text_html">
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1002">Loading BokehJS ...</span>
+</div></div><script type="application/javascript">
+(function(root) {
+  function now() {
+    return new Date();
+  }
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
-</div>
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1002");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    const hashes = {"https://cdn.bokeh.org/bokeh/release/bokeh-2.3.1.min.js": "YF85VygJKMVnHE+lLv2AM93Vbstr0yo2TbIu5v8se5Rq3UQAUmcuh4aaJwNlpKwa", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.1.min.js": "KKuas3gevv3PvrlkyCMzffFeaMq5we/a2QsP5AUoS3mJ0jmaCL7jirFJN3GoE/lM", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.1.min.js": "MK/uFc3YT18pkvvXRl66tTHjP0/dxoSH2e/eiNMFIguKlun2+WVqaPTWmUy/zvh4"};
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      if (url in hashes) {
+        element.crossOrigin = "anonymous";
+        element.integrity = "sha384-" + hashes[url];
+      }
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js", "https://unpkg.com/moment@2.27.0/moment.js", "https://cdn.bokeh.org/bokeh/release/bokeh-2.3.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.3.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.3.1.min.js", "https://unpkg.com/@holoviz/panel@^0.11.3/dist/panel.min.js"];
+  var css_urls = ["https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator_simple.min.css"];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1002")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
 </div>
 </div>
 <div class="section" id="read-and-format-data">
-<h3>Read and format data<a class="headerlink" href="#read-and-format-data" title="Permalink to this headline">¶</a></h3>
+<h2>Read and format data<a class="headerlink" href="#read-and-format-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> trips = pd.read_csv(zipfile.open(&#39;trips.txt&#39;))
@@ -1922,18 +2151,18 @@ U9k9N2vl5+cH0en0TRiGWX18fC65vnh+LxqNBq2oqFhgMpmi7XY7arVaj+zdu/fxn/l/4bSZl5fH
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 224 ms, sys: 32.1 ms, total: 256 ms
-Wall time: 255 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 171 ms, sys: 27.5 ms, total: 198 ms
+Wall time: 198 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>route_id                   1279
-service_id                 2101
-trip_id                  224268
-trip_headsign              2714
-trip_short_name             371
+service_id                 2011
+trip_id                  222297
+trip_headsign              2720
+trip_short_name             373
 direction_id                  2
-block_id                  10529
-shape_id                  14518
+block_id                  10380
+shape_id                  14456
 wheelchair_accessible         2
 bikes_allowed                 2
 dtype: int64
@@ -1952,8 +2181,8 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.73 ms, sys: 0 ns, total: 5.73 ms
-Wall time: 5.1 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.24 ms, sys: 20 µs, total: 4.26 ms
+Wall time: 3.62 ms
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1991,78 +2220,78 @@ Wall time: 5.1 ms
   <tbody>
     <tr>
       <th>0</th>
-      <td>18804_3</td>
+      <td>21649_109</td>
       <td>1</td>
-      <td>148928020</td>
-      <td>Seegefeld, Bahnhof</td>
+      <td>158254848</td>
+      <td>S Anhalter Bahnhof</td>
       <td>NaN</td>
       <td>0</td>
       <td>NaN</td>
-      <td>594</td>
+      <td>467</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>648</td>
+      <td>109</td>
+      <td>S25</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>18804_3</td>
-      <td>1</td>
-      <td>148928022</td>
-      <td>Seegefeld, Bahnhof</td>
+      <td>21649_109</td>
+      <td>2</td>
+      <td>158254912</td>
+      <td>S Anhalter Bahnhof</td>
       <td>NaN</td>
       <td>0</td>
       <td>NaN</td>
-      <td>594</td>
+      <td>467</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>648</td>
+      <td>109</td>
+      <td>S25</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>18804_3</td>
-      <td>2</td>
-      <td>148928008</td>
-      <td>Seegefeld, Bahnhof</td>
+      <td>21649_109</td>
+      <td>1</td>
+      <td>158254847</td>
+      <td>S Anhalter Bahnhof</td>
       <td>NaN</td>
       <td>0</td>
       <td>NaN</td>
-      <td>594</td>
+      <td>467</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>648</td>
+      <td>109</td>
+      <td>S25</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>18804_3</td>
-      <td>1</td>
-      <td>148928025</td>
-      <td>Seegefeld, Bahnhof</td>
+      <td>21649_109</td>
+      <td>2</td>
+      <td>158254911</td>
+      <td>S Anhalter Bahnhof</td>
       <td>NaN</td>
       <td>0</td>
       <td>NaN</td>
-      <td>594</td>
+      <td>467</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>648</td>
+      <td>109</td>
+      <td>S25</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>18804_3</td>
+      <td>21649_109</td>
       <td>1</td>
-      <td>148928026</td>
-      <td>Seegefeld, Bahnhof</td>
+      <td>158254846</td>
+      <td>S Anhalter Bahnhof</td>
       <td>NaN</td>
       <td>0</td>
       <td>NaN</td>
-      <td>594</td>
+      <td>467</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>648</td>
+      <td>109</td>
+      <td>S25</td>
     </tr>
   </tbody>
 </table>
@@ -2097,12 +2326,12 @@ Wall time: 5.1 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trips_9_0.png" src="_images/trips_9_0.png" />
+<img alt="_images/trips_6_0.png" src="_images/trips_6_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="stations-with-most-arriving-trips">
-<h3>Stations with most arriving trips<a class="headerlink" href="#stations-with-most-arriving-trips" title="Permalink to this headline">¶</a></h3>
+<h2>Stations with most arriving trips<a class="headerlink" href="#stations-with-most-arriving-trips" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trips</span><span class="p">[</span><span class="s1">&#39;trip_headsign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2110,11 +2339,11 @@ Wall time: 5.1 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S+U Zoologischer Garten    5671
-S+U Rathaus Spandau        4415
-S Schöneweide/Sterndamm    3122
-Moabit, Lüneburger Str.    3059
-S+U Rathaus Steglitz       2712
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S+U Zoologischer Garten    5593
+S+U Rathaus Spandau        4162
+Moabit, Lüneburger Str.    3056
+S Schöneweide/Sterndamm    2918
+S+U Rathaus Steglitz       2711
 Name: trip_headsign, dtype: int64
 </pre></div>
 </div>
@@ -2147,12 +2376,12 @@ Name: trip_headsign, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trips_13_0.png" src="_images/trips_13_0.png" />
+<img alt="_images/trips_10_0.png" src="_images/trips_10_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="stations-with-most-arriving-routes">
-<h3>Stations with most arriving routes<a class="headerlink" href="#stations-with-most-arriving-routes" title="Permalink to this headline">¶</a></h3>
+<h2>Stations with most arriving routes<a class="headerlink" href="#stations-with-most-arriving-routes" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trips</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;route_id&#39;</span><span class="p">,</span> <span class="s1">&#39;trip_headsign&#39;</span><span class="p">])[</span><span class="s1">&#39;trip_headsign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2160,11 +2389,11 @@ Name: trip_headsign, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cottbus, Hauptbahnhof        38
-S Potsdam Hauptbahnhof       29
-Pritzwalk, Bahnhof           25
-S+U Rathaus Spandau          22
-Frankfurt (Oder), Bahnhof    22
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cottbus, Hauptbahnhof     43
+S Potsdam Hauptbahnhof    29
+Pritzwalk, Bahnhof        25
+S Bernau Bhf              23
+S+U Rathaus Spandau       22
 Name: trip_headsign, dtype: int64
 </pre></div>
 </div>
@@ -2198,8 +2427,7 @@ Name: trip_headsign, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trips_17_0.png" src="_images/trips_17_0.png" />
-</div>
+<img alt="_images/trips_14_0.png" src="_images/trips_14_0.png" />
 </div>
 </div>
 </div>
