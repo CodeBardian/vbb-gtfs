@@ -3,3 +3,5 @@
 !requirements.txt
 .ipynb_checkpoints
 .vscode
+*.zip
+*.csv
